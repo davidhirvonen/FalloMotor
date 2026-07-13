@@ -3,215 +3,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>FALLOMOTOR | Diagnóstico de averías</title>
+<title>FALLOMOTOR - Diagnóstico inteligente</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #eef1f5;
-    color: #222;
+    background: #101820;
+    color: white;
 }
 
 header {
-    background: linear-gradient(135deg, #111, #444);
-    color: white;
     text-align: center;
-    padding: 35px 20px;
+    padding: 30px 15px;
+    background: linear-gradient(135deg,#0d6efd,#00c6ff);
 }
 
 .logo {
+    font-size: 45px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.car {
     font-size: 55px;
 }
 
-h1 {
-    margin: 10px 0;
-    font-size: 38px;
-}
-
-header p {
+.subtitle {
     font-size: 18px;
 }
 
 .container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-}
-
-.card {
+    max-width: 600px;
+    margin: 25px auto;
     background: white;
+    color: #222;
     padding: 25px;
-    margin: 20px 0;
     border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-h2 {
-    color: #d60000;
 }
 
 input, textarea, select {
     width: 100%;
-    padding: 14px;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
+    padding: 12px;
+    margin: 8px 0 15px;
     border-radius: 8px;
-    font-size: 16px;
-}
-
-textarea {
-    height: 130px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
 button {
     width: 100%;
     padding: 15px;
-    background: #d60000;
+    background: #0d6efd;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 18px;
     cursor: pointer;
 }
 
 button:hover {
-    background: #a00000;
+    background: #084298;
 }
 
-.info {
-    display: grid;
-    gap: 15px;
-}
-
-.item {
-    background: #f7f7f7;
+.resultado {
+    margin-top: 20px;
     padding: 15px;
+    background: #e9f5ff;
     border-radius: 10px;
+    display: none;
 }
 
 footer {
-    text-align: center;
-    padding: 25px;
-    color: #666;
-}
-
-.badge {
-    background: #d60000;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 20px;
-    display: inline-block;
+    text-align:center;
+    padding:20px;
+    font-size:14px;
+    color:#aaa;
 }
 </style>
-
 </head>
 
 <body>
 
 <header>
-<div class="logo">🚗</div>
-<h1>FALLOMOTOR</h1>
-<p>Tu asistente inteligente para diagnosticar averías del vehículo</p>
-<span class="badge">Versión 2.0</span>
+<div class="car">🚗⚙️</div>
+<div class="logo">FALLOMOTOR</div>
+<div class="subtitle">
+Detecta averías de tu vehículo con ayuda inteligente
+</div>
 </header>
 
 
 <div class="container">
 
+<h2>Consulta tu avería</h2>
 
-<div class="card">
-
-<h2>🔧 Consulta tu avería</h2>
-
-<p>
-Introduce los datos de tu vehículo y describe el problema.
-</p>
-
-<label>Marca</label>
-<input type="text" placeholder="Ejemplo: Volkswagen">
+<label>Marca del vehículo</label>
+<input id="marca" placeholder="Ej: BMW, Seat, Ford">
 
 <label>Modelo</label>
-<input type="text" placeholder="Ejemplo: Golf">
+<input id="modelo" placeholder="Ej: León, Golf, Focus">
 
 <label>Año</label>
-<input type="number" placeholder="Ejemplo: 2018">
+<input id="anio" placeholder="Ej: 2018">
 
 <label>Motor</label>
-<input type="text" placeholder="Ejemplo: 2.0 TDI">
+<input id="motor" placeholder="Ej: 2.0 TDI">
 
 <label>Kilómetros</label>
-<input type="number" placeholder="Ejemplo: 150000">
+<input id="km" placeholder="Ej: 150000">
 
-<label>Describe el fallo</label>
-<textarea placeholder="Ejemplo: Hace un ruido metálico al acelerar, pierde potencia..."></textarea>
+<label>Código OBD (opcional)</label>
+<input id="obd" placeholder="Ej: P0301">
+
+<label>Síntomas</label>
+<textarea id="sintomas" rows="5" placeholder="Describe el problema: ruidos, humo, pérdida de potencia..."></textarea>
 
 
-<button>
-Analizar avería
+<button onclick="diagnosticar()">
+🔍 Analizar avería
 </button>
 
 
-</div>
-
-
-<div class="card">
-
-<h2>🤖 Diagnóstico inteligente</h2>
-
-<p>
-FALLOMOTOR está preparado para incorporar inteligencia artificial y ayudarte a encontrar posibles causas de averías.
-</p>
-
-<div class="info">
-
-<div class="item">
-⚙️ Análisis de síntomas del vehículo
-</div>
-
-<div class="item">
-🔊 Diagnóstico de ruidos del motor
-</div>
-
-<div class="item">
-📋 Historial de reparaciones
-</div>
-
-</div>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>🚘 Servicios</h2>
-
-<ul>
-<li>Ayuda con problemas mecánicos</li>
-<li>Interpretación de síntomas</li>
-<li>Consejos de mantenimiento</li>
-<li>Información antes de acudir al taller</li>
-</ul>
-
-</div>
-
+<div class="resultado" id="resultado"></div>
 
 </div>
 
 
 <footer>
-© 2026 FALLOMOTOR
-<br>
-Diagnóstico de vehículos inteligente
+FALLOMOTOR © 2026 - Diagnóstico inteligente de vehículos
 </footer>
 
+
+<script>
+
+function diagnosticar(){
+
+let sintomas = document.getElementById("sintomas").value;
+
+let resultado = document.getElementById("resultado");
+
+resultado.style.display="block";
+
+resultado.innerHTML = `
+<h3>Resultado del diagnóstico</h3>
+
+<p><b>Posibles causas:</b></p>
+<ul>
+<li>Revisar sistema de admisión o combustible.</li>
+<li>Comprobar sensores relacionados con el fallo.</li>
+<li>Realizar lectura de códigos OBD profesionales.</li>
+</ul>
+
+<p><b>Gravedad:</b> Pendiente de análisis avanzado.</p>
+
+<p><b>Próxima mejora:</b> Conectar inteligencia artificial para analizar todos los datos del vehículo.</p>
+
+`;
+
+}
+
+</script>
 
 </body>
 </html>
